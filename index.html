@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Отчёты по уборке 2026</title>
+<style>
+:root{--gbg:#f5f7f3;--w:#fff;--gd:#2d6a2d;--gm:#4a9b3f;--gl:#7ec86b;--gp:#d4edca;
+      --yd:#7a5c00;--ym:#c4930a;--yp:#fdf3dc;--td:#1a2e1a;--tm:#4a5e4a;--tl:#8a9e8a;
+      --sh:0 4px 20px rgba(0,0,0,.08);--r:18px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--gbg);color:var(--td);min-height:100vh}
+body{max-width:440px;margin:0 auto}
+.hero{background:linear-gradient(160deg,#1a3d1a 0%,#2d6a2d 60%,#4a9b3f 100%);padding:48px 24px 36px;text-align:center}
+.hero-icon{font-size:52px;margin-bottom:12px}
+.hero h1{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
+.hero p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.5}
+.section{padding:20px 16px 8px}
+.section-title{font-size:11px;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
+.card{background:var(--w);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:14px;overflow:hidden;text-decoration:none;display:block;color:inherit;transition:.18s}
+.card:active{transform:scale(.98)}
+.card-top{padding:20px 20px 16px;display:flex;align-items:flex-start;gap:16px}
+.card-icon{font-size:44px;line-height:1;flex-shrink:0}
+.card-info{flex:1}
+.card-title{font-size:16px;font-weight:800;color:var(--td);margin-bottom:4px}
+.card-sub{font-size:12px;color:var(--tm);line-height:1.5}
+.card-bottom{padding:12px 20px;border-top:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center}
+.card-stat{text-align:center}
+.cs-val{font-size:15px;font-weight:800}
+.cs-lbl{font-size:10px;color:var(--tl);margin-top:1px}
+.card-arrow{font-size:20px;color:var(--tl)}
+/* Горошек — зелёный */
+.card-goroshek .card-top{background:linear-gradient(135deg,#f0f7ec,#e0f2d8)}
+.card-goroshek .cs-val{color:var(--gd)}
+/* Зерновые — золотой */
+.card-zernovye .card-top{background:linear-gradient(135deg,#faf6ec,#f5ead0)}
+.card-zernovye .cs-val{color:var(--yd)}
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:10px;font-size:11px;font-weight:600;margin-top:6px}
+.badge-active{background:#e6f4e3;color:var(--gd)}
+.badge-wait{background:#fef4e0;color:#b07a00}
+.badge-soon{background:#f0f0f0;color:#888}
+/* FOOTER */
+.footer{padding:16px;text-align:center;font-size:11px;color:var(--tl);border-top:1px solid #eee;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-icon">🏡</div>
+  <h1>ООО «Грин Рэй Кубань»</h1>
+  <p>Оперативные отчёты по уборке урожая<br>Сезон 2026 г.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Активные отчёты</div>
+
+  <!-- ГОРОШЕК -->
+  <a class="card card-goroshek" href="goroshek.html">
+    <div class="card-top">
+      <div class="card-icon">🌿</div>
+      <div class="card-info">
+        <div class="card-title">Горошек овощной</div>
+        <div class="card-sub">Ежедневный сбор · Финометр · Динамика 2025–2026</div>
+        <span class="badge badge-active">● Активна уборка</span>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <div class="card-stat"><div class="cs-val" style="color:var(--gd)">1 047 т</div><div class="cs-lbl">Факт</div></div>
+      <div class="card-stat"><div class="cs-val" style="color:var(--gd)">9 536 т</div><div class="cs-lbl">План</div></div>
+      <div class="card-stat"><div class="cs-val" style="color:var(--gd)">5,5 т/га</div><div class="cs-lbl">Урожайность</div></div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+
+  <!-- ЗЕРНОВЫЕ -->
+  <a class="card card-zernovye" href="zernovye.html">
+    <div class="card-top">
+      <div class="card-icon">🌾</div>
+      <div class="card-info">
+        <div class="card-title">Зерновые культуры</div>
+        <div class="card-sub">Пшеница · Горох · Подсолнечник · Кукуруза · История</div>
+        <span class="badge badge-active">● Идёт уборка пшеницы</span>
+      </div>
+    </div>
+    <div class="card-bottom">
+      <div class="card-stat"><div class="cs-val" style="color:var(--yd)">1 794 т</div><div class="cs-lbl">Пшеница факт</div></div>
+      <div class="card-stat"><div class="cs-val" style="color:var(--yd)">24 307 т</div><div class="cs-lbl">Пшеница план</div></div>
+      <div class="card-stat"><div class="cs-val" style="color:var(--yd)">65,7 ц/га</div><div class="cs-lbl">Урожайность</div></div>
+      <div class="card-arrow">›</div>
+    </div>
+  </a>
+
+</div>
+
+<div class="section">
+  <div class="section-title">Предстоящие</div>
+
+  <div class="card" style="opacity:.7;cursor:default">
+    <div class="card-top">
+      <div class="card-icon">🌻</div>
+      <div class="card-info">
+        <div class="card-title">Подсолнечник</div>
+        <div class="card-sub">Уборка планируется в августе–сентябре</div>
+        <span class="badge badge-soon">○ Ожидается</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="opacity:.7;cursor:default">
+    <div class="card-top">
+      <div class="card-icon">🌽</div>
+      <div class="card-info">
+        <div class="card-title">Кукуруза на зерно</div>
+        <div class="card-sub">Уборка планируется в сентябре–октябре</div>
+        <span class="badge badge-soon">○ Ожидается</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Данные обновляются ежедневно · ООО «Грин Рэй Кубань» 2026
+</div>
+
+</body>
+</html>
