@@ -230,10 +230,10 @@ function parse(wb) {
     }
   }
 
-  // Рапс озимый
-  if (sheets.includes('Рапс озимый')) {
-    const sh = wb.Sheets['Рапс озимый'];
-    const c = parseCulture(sh,'Рапс озимый','#4a7c3f','🌿');
+  // Озимый рапс
+  if (sheets.includes('Озимый рапс')) {
+    const sh = wb.Sheets['Озимый рапс'];
+    const c = parseCulture(sh,'Озимый рапс','#4a7c3f','🌿');
     if (c) {
       c.planVal  = +cv(sh,19,2)||0;
       c.factVal  = +cv(sh,20,2)||0;
@@ -247,7 +247,7 @@ function parse(wb) {
   } else {
     // Листа нет в файле — добавляем заглушку
     cultures.push({
-      name:'Рапс озимый', color:'#4a7c3f', emoji:'🌿',
+      name:'Озимый рапс', color:'#4a7c3f', emoji:'🌿',
       years:[2020,2021,2022,2023,2024,2025,2026],
       histYield:[0,0,0,0,0,0,0], histTotal:[0,0,0,0,0,0,0], histArea:[0,0,0,0,0,0,0],
       startDate:null, endDate:null, calDays:null, factDays:null, techCount:null,
@@ -428,13 +428,13 @@ function renderCulture(c) {
       <div class="tab on" id="tab-summary">
         <div style="text-align:center;padding:32px 20px">
           <div style="font-size:48px;margin-bottom:16px">🌿</div>
-          <div style="font-size:16px;font-weight:700;color:var(--gd);margin-bottom:12px">Рапс озимый 2026</div>
+          <div style="font-size:16px;font-weight:700;color:var(--gd);margin-bottom:12px">Озимый рапс 2026</div>
           <div style="background:#e6f4e3;color:#2d6a2d;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:16px">
             ✅ Уборка завершена
           </div>
           <div style="font-size:13px;color:var(--tm);line-height:1.6;margin-bottom:16px">
             Детальные данные появятся после добавления листа<br>
-            <strong>«Рапс озимый»</strong> в файл<br>
+            <strong>«Озимый рапс»</strong> в файл<br>
             <code style="font-size:11px;background:#f0f0f0;padding:2px 6px;border-radius:4px">zernovye_2026.xlsx</code>
           </div>
         </div>
