@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Кукуруза овощная 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--gd:#1a5276;--gm:#2471a3;--gl:#5dade2;--gp:#d6eaf8;--gbg:#eaf4fb;
+  --yw:#e8a920;--rd:#c0392b;--gr:#2d6a2d;--grm:#4a9b3f;
+  --td:#0d2137;--tm:#2e5c7a;--tl:#7ba8c4;--w:#fff;
+  --sh:0 2px 12px rgba(26,82,118,.13);--r:14px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--gbg);color:var(--td);min-height:100vh}
+body{max-width:440px;margin:0 auto}
+#ls{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:32px 24px;text-align:center}
+.li{font-size:56px;margin-bottom:16px;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.lt{font-size:17px;font-weight:700;color:var(--gd);margin-bottom:8px}
+.lsub{font-size:13px;color:var(--tm);line-height:1.5}
+#lerr{display:none;margin-top:16px;background:#fde8e6;border-radius:10px;padding:12px 16px;font-size:12px;color:var(--rd);line-height:1.6}
+#app{display:none}
+.hdr{background:linear-gradient(135deg,var(--gd),var(--gm));padding:15px 16px 11px;position:sticky;top:0;z-index:100;box-shadow:0 3px 14px rgba(26,82,118,.28)}
+.hr{display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:14px;font-weight:700;color:#fff}
+.hdr p{font-size:11px;color:rgba(255,255,255,.65);margin-top:2px}
+.dbadge{background:rgba(255,255,255,.2);color:#fff;font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.back{background:rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;text-decoration:none;white-space:nowrap;margin-left:5px}
+.body{padding:12px 13px 82px}
+.tab{display:none}.tab.on{display:block}
+/* KPI */
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:11px}
+.kc{background:var(--w);border-radius:var(--r);padding:12px 11px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gl)}
+.kc.w::before{background:var(--yw)}.kc.g::before{background:var(--grm)}.kc.a::before{background:var(--rd)}
+.kl{font-size:10px;color:var(--tl);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.kv{font-size:20px;font-weight:800;color:var(--gd);line-height:1}
+.kv em{font-size:11px;font-weight:500;color:var(--tm);font-style:normal}
+.kp{font-size:11px;color:var(--tm);margin-top:3px}
+.bdg{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:4px}
+.br{background:#fde8e6;color:var(--rd)}.bg{background:#e6f4e3;color:var(--gr)}.by{background:#fef4e0;color:var(--yw)}
+.st{font-size:11px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:.6px;margin:14px 0 7px}
+/* INFO CARD */
+.ic{background:var(--w);border-radius:var(--r);padding:13px;box-shadow:var(--sh);margin-bottom:10px}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--gp)}
+.ir:last-child{border:none}
+.il{font-size:12px;color:var(--tm)}.iv{font-size:12px;font-weight:700;color:var(--gd);text-align:right}
+/* CHART */
+.cc{background:var(--w);border-radius:var(--r);padding:12px 11px;box-shadow:var(--sh);margin-bottom:10px}
+.ct{font-size:12px;font-weight:700;color:var(--td);margin-bottom:9px}
+.leg{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.li2{display:flex;align-items:center;font-size:11px;color:var(--tm)}
+.dot{width:10px;height:10px;border-radius:50%;margin-right:4px;flex-shrink:0}
+/* DAILY */
+.dl{display:flex;flex-direction:column;gap:6px}
+.di{background:var(--w);border-radius:10px;padding:10px 12px;box-shadow:var(--sh);display:flex;align-items:center;gap:10px}
+.dd{min-width:52px;font-size:11px;color:var(--tl)}
+.dw{flex:1}
+.dbg{height:8px;background:var(--gp);border-radius:4px;overflow:hidden}
+.dbar{height:100%;background:var(--gm);border-radius:4px}
+.dv{font-size:12px;font-weight:700;color:var(--gd);min-width:64px;text-align:right}
+.df{font-size:10px;color:var(--tl);margin-top:2px}
+/* INFO BOX */
+.ib{background:var(--gp);border-left:3px solid var(--gm);border-radius:8px;padding:9px 11px;font-size:12px;color:var(--tm);margin-bottom:10px;line-height:1.5}
+.ib strong{color:var(--gd)}
+/* NAV */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:var(--w);border-top:1px solid var(--gp);display:flex;justify-content:space-around;padding:7px 0 10px;z-index:200}
+.nb{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:var(--tl);cursor:pointer;padding:3px 8px;transition:color .15s;user-select:none}
+.nb.on{color:var(--gm)}
+.ni{font-size:20px;line-height:1}
+/* TOGGLE */
+.tog{display:flex;gap:6px;margin-bottom:10px}
+.tb{flex:1;padding:7px;border-radius:10px;border:1.5px solid var(--gl);background:var(--w);color:var(--gd);font-size:11px;font-weight:600;cursor:pointer;text-align:center;transition:.15s;user-select:none}
+.tb.on{background:var(--gm);border-color:var(--gm);color:#fff}
+/* КОНСЕРВЫ */
+.cons-kc{background:var(--w);border-radius:var(--r);padding:12px 11px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.cons-kc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gm)}
+.cons-kc.c2::before{background:var(--yw)}.cons-kc.c3::before{background:var(--gl)}
+/* ПРОСТОИ */
+.stop-card{background:var(--w);border-radius:var(--r);padding:13px;box-shadow:var(--sh);margin-bottom:8px}
+.stop-date{font-size:13px;font-weight:700;color:var(--td);margin-bottom:8px;display:flex;justify-content:space-between}
+.cause-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.cause-row:last-child{margin-bottom:0}
+.cause-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.cause-name{font-size:11px;color:var(--tm);flex:1;line-height:1.3}
+.cause-min{font-size:11px;font-weight:700;color:var(--td);white-space:nowrap}
+.sum-row{background:var(--w);border-radius:10px;padding:11px 13px;box-shadow:var(--sh);margin-bottom:7px}
+.sum-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.sum-name{font-size:13px;font-weight:600;color:var(--td);display:flex;align-items:center;gap:7px}
+.sum-val{font-size:13px;font-weight:800;color:var(--rd)}
+.sum-bar-bg{height:8px;background:#fde8e6;border-radius:4px;overflow:hidden}
+.sum-bar{height:100%;border-radius:4px}
+.sum-sub{font-size:10px;color:var(--tl);margin-top:4px}
+.empty{color:var(--tl);font-size:13px;text-align:center;padding:18px}
+/* КОНТРАГЕНТЫ */
+.ctrbar{background:var(--w);padding:9px 13px 10px;border-bottom:1px solid var(--gp);position:sticky;top:56px;z-index:99}
+.ctrlbl{font-size:10px;color:var(--tl);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.ctrchips{display:flex;gap:5px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.ctrchips::-webkit-scrollbar{display:none}
+.ctr{flex-shrink:0;padding:6px 12px;border-radius:20px;border:1.5px solid var(--gl);background:var(--w);color:var(--gd);font-size:12px;font-weight:500;cursor:pointer;transition:.15s;user-select:none;white-space:nowrap}
+.ctr.on{background:var(--gm);border-color:var(--gm);color:#fff;box-shadow:0 2px 8px rgba(36,113,163,.3)}
+.ctr:active{transform:scale(.95)}
+.ctr.nodata{opacity:.55;border-style:dashed}
+</style>
+</head>
+<body>
+
+<div id="ls">
+  <div class="li">🌽</div>
+  <div class="lt">Загрузка данных…</div>
+  <div class="lsub">Читаем данные из Excel</div>
+  <div id="lerr">⚠️ Не удалось загрузить данные.<br>Обратитесь к агроному.</div>
+</div>
+
+<div id="app">
+  <div class="hdr">
+    <div class="hr">
+      <div><h1>🌽 Кукуруза овощная 2026</h1><p id="hsub">Оперативная сводка</p></div>
+      <div style="display:flex;align-items:center">
+        <div class="dbadge" id="dbadge">—</div>
+        <a class="back" href="index.html">← Меню</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- КОНТРАГЕНТЫ -->
+  <div class="ctrbar">
+    <div class="ctrlbl">Контрагент</div>
+    <div class="ctrchips" id="ctrChips"></div>
+  </div>
+
+  <div class="body">
+    <!-- СВОДКА -->
+    <div class="tab on" id="t-main">
+      <div class="kpi" id="kgrid"></div>
+      <div class="st">Параметры уборки</div>
+      <div class="ic" id="infoCard"></div>
+      <div class="cc">
+        <div class="ct">Урожайность по годам, ц/га</div>
+        <div style="position:relative;height:200px"><canvas id="cYield"></canvas></div>
+      </div>
+      <div class="cc">
+        <div class="ct">Валовый сбор по годам, т</div>
+        <div style="position:relative;height:185px"><canvas id="cTotal"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ПО ДНЯМ -->
+    <div class="tab" id="t-daily">
+      <div class="ib" id="dinfo"></div>
+      <div class="dl" id="dlist"></div>
+    </div>
+
+    <!-- ДИНАМИКА -->
+    <div class="tab" id="t-cmp">
+      <div class="tog">
+        <div class="tb on" onclick="setMode('yield',this)">Урожайность</div>
+        <div class="tb" onclick="setMode('total',this)">Вал. сбор</div>
+        <div class="tb" onclick="setMode('daily',this)">По дням</div>
+      </div>
+      <div class="cc" id="cmpA">
+        <div class="ct" id="cmpAt"></div>
+        <div style="position:relative;height:230px"><canvas id="cHist"></canvas></div>
+      </div>
+      <div class="cc" id="cmpB" style="display:none">
+        <div class="ct">Ежедневный сбор: 2025 vs 2026</div>
+        <div style="position:relative;height:250px"><canvas id="cDay"></canvas></div>
+        <div class="leg">
+          <div class="li2"><span class="dot" style="background:#1a5276"></span>2026</div>
+          <div class="li2"><span class="dot" style="background:#5dade2"></span>2025</div>
+        </div>
+      </div>
+      <div class="ib" id="cmpInfo" style="margin-top:4px"></div>
+    </div>
+
+    <!-- КОНСЕРВЫ -->
+    <div class="tab" id="t-cons">
+      <div class="kpi" id="consKpi"></div>
+      <div class="cc">
+        <div class="ct" id="consChartTitle">Выработка по дням, тыс. шт.</div>
+        <div style="position:relative;height:220px"><canvas id="cCons"></canvas></div>
+      </div>
+      <div class="cc">
+        <div class="ct">Сравнение 2025 vs 2026, тыс. шт.</div>
+        <div style="position:relative;height:210px"><canvas id="cCons2"></canvas></div>
+        <div class="leg">
+          <div class="li2"><span class="dot" style="background:#1a5276"></span>2026</div>
+          <div class="li2"><span class="dot" style="background:#5dade2"></span>2025</div>
+        </div>
+      </div>
+      <div class="st">По дням 2026</div>
+      <div class="dl" id="consList"></div>
+    </div>
+
+    <!-- ПРОСТОИ -->
+    <div class="tab" id="t-stop">
+      <div class="tog" style="margin-bottom:10px">
+        <div class="tb on" id="stopV1" onclick="setStopView('day',this)">По дням</div>
+        <div class="tb" id="stopV2" onclick="setStopView('summary',this)">Сводка</div>
+      </div>
+      <div id="stopDay">
+        <div class="cc">
+          <div class="ct">Простои по дням, мин (ЛН-1 + ЛН-2)</div>
+          <div style="position:relative;height:220px"><canvas id="cStop"></canvas></div>
+        </div>
+        <div class="st">Детали по дням и сменам</div>
+        <div id="stopDayList"></div>
+      </div>
+      <div id="stopSum" style="display:none">
+        <div class="cc">
+          <div class="ct">Итого по категориям простоев, мин</div>
+          <div style="position:relative;height:260px"><canvas id="cStopSum"></canvas></div>
+        </div>
+        <div class="st">Детализация по категориям</div>
+        <div id="stopSumList"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="nb on" onclick="goTab('main',this)"><div class="ni">📊</div><div>Сводка</div></div>
+    <div class="nb" onclick="goTab('daily',this)"><div class="ni">📅</div><div>По дням</div></div>
+    <div class="nb" onclick="goTab('cmp',this)"><div class="ni">📈</div><div>Динамика</div></div>
+    <div class="nb" onclick="goTab('cons',this)"><div class="ni">🥫</div><div>Консервы</div></div>
+    <div class="nb" onclick="goTab('stop',this)"><div class="ni">⏸️</div><div>Простои</div></div>
+  </div>
+</div>
+
+<script>
+const REPO  = 'Margo26stavr/uborka_2026';
+const FILE  = `https://raw.githubusercontent.com/${REPO}/main/kukuruza_2026.xlsx`;
+const FILE2 = `https://raw.githubusercontent.com/${REPO}/main/kukuruza_cons_2026.xlsx`;
+// Запасные адреса через CDN (на случай кэша 404 у raw.githubusercontent)
+const FILE_ALT  = `https://cdn.jsdelivr.net/gh/${REPO}@main/kukuruza_2026.xlsx`;
+const FILE2_ALT = `https://cdn.jsdelivr.net/gh/${REPO}@main/kukuruza_cons_2026.xlsx`;
+
+let D = {};
+let cMode = 'yield';
+let aCtr = 'all';
+let chYield=null,chTotal=null,chHist=null,chDay=null,chCons=null,chCons2=null,chStop=null,chStopSum=null;
+let stopView = 'day';
+
+// ── ЗАГРУЗКА ──────────────────────────────────────────────
+function showErr(msg) {
+  const li = document.querySelector('.li');
+  const lt = document.querySelector('.lt');
+  const le = document.getElementById('lerr');
+  if (li) { li.textContent = '⚠️'; li.style.animation = 'none'; }
+  if (lt) lt.textContent = 'Не удалось загрузить данные';
+  if (le) { le.style.display = 'block'; le.innerHTML = msg; }
+}
+
+async function safeFetch(url) {
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>ctrl.abort(), 30000); // 30 сек таймаут
+    const r = await fetch(url + '?t=' + Date.now(), {cache:'no-store', signal:ctrl.signal});
+    clearTimeout(timer);
+    if (!r.ok) { console.warn('HTTP '+r.status+' для '+url); return null; }
+    return await r.arrayBuffer();
+  } catch(e) { console.warn('Ошибка загрузки '+url+':', e.message); return null; }
+}
+
+// Пробуем основной адрес, при неудаче — запасной CDN
+async function fetchWithFallback(url, altUrl) {
+  let buf = await safeFetch(url);
+  if (!buf && altUrl) {
+    console.warn('Основной адрес не ответил, пробуем CDN…');
+    buf = await safeFetch(altUrl);
+  }
+  return buf;
+}
+
+async function load() {
+  try {
+    if (typeof XLSX === 'undefined') throw new Error('Библиотека XLSX не загрузилась.<br>Проверьте интернет-соединение.');
+    if (typeof Chart === 'undefined') throw new Error('Библиотека Chart.js не загрузилась.<br>Проверьте интернет-соединение.');
+
+    const [buf1, buf2] = await Promise.all([
+      fetchWithFallback(FILE, FILE_ALT),
+      fetchWithFallback(FILE2, FILE2_ALT)
+    ]);
+    if (!buf1) throw new Error('Файл <strong>kukuruza_2026.xlsx</strong> не удалось загрузить.<br>Попробуйте обновить страницу через 5 минут.');
+
+    const wb1 = XLSX.read(buf1, {type:'array', cellDates:false});
+    const wb2 = buf2 ? XLSX.read(buf2, {type:'array', cellDates:false}) : null;
+
+    if (!wb1.Sheets['Реестр уборки 2026'])
+      throw new Error('В файле нет листа <strong>«Реестр уборки 2026»</strong>.<br>Найдены листы: ' + wb1.SheetNames.slice(0,5).join(', '));
+
+    D = parse(wb1, wb2);
+    document.getElementById('ls').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    init();
+  } catch(e) {
+    console.error('Ошибка:', e);
+    showErr(e.message || 'Неизвестная ошибка. Откройте консоль (F12) для деталей.');
+  }
+}
+
+// ── ПАРСИНГ ───────────────────────────────────────────────
+function rv(sh,r,c){ const cell=sh[XLSX.utils.encode_cell({r,c})]; return cell?cell.v:null; }
+// Конвертация Excel-даты в локальную дату без UTC-сдвига
+function toDate(v){
+  if(v==null||v==='') return null;
+  // С cellDates:false Excel даты приходят как числовой serial
+  if(typeof v==='number' && v > 1){
+    // Excel serial → UTC полночь → локальная дата через UTC-компоненты
+    const tmp = new Date(Math.round((v - 25569) * 86400000));
+    return new Date(tmp.getUTCFullYear(), tmp.getUTCMonth(), tmp.getUTCDate());
+  }
+  // Если уже Date (созданный нами через new Date(y,m,d)) — возвращаем как есть
+  if(v instanceof Date && !isNaN(v)) return v;
+  return null;
+}
+// Форматирование даты — принимает только локальные Date (созданные через new Date(y,m,d))
+function fmtD(d){ if(!d) return ''; return d.toLocaleDateString('ru-RU',{day:'numeric',month:'short'}); }
+function fmtDate(d){ if(!d) return '—'; return d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'}); }
+function dateKey(dt){ if(!dt||isNaN(dt))return null; const y=dt.getFullYear(),m=String(dt.getMonth()+1).padStart(2,'0'),d=String(dt.getDate()).padStart(2,'0'); return `${y}-${m}-${d}`; }
+
+// ── КОНТРАГЕНТЫ: лист → отображаемое имя + фильтр реестра ──
+const CONTRACTORS = [
+  {key:'grk_super', label:'ГРК суперсладкая', sheet:'Кукуруза суперсл ГРК',
+   regOrg:['грин рэй'], regNom:['суперсладк']},
+  {key:'grk_ovosh', label:'ГРК овощная',      sheet:'Кукуруза сахарная ГРК',
+   regOrg:['грин рэй'], regNom:['сахарная'], regNomExclude:['суперсладк']},
+  {key:'kirova',    label:'Кирова',           sheet:'Кукуруза Кирова',
+   regOrg:['кирова'], regNom:[]},
+  {key:'irriko_s',  label:'Иррико сахарная',  sheet:'Кукуруза Иррико сахар',
+   regOrg:['гофицкое','ипатовск'], regNom:[]},
+  {key:'irriko_sup',label:'Иррико суперсл.',  sheet:'Кукуруза Иррико суперсл',
+   regOrg:['джалга'], regNom:[]},
+  {key:'kolos',     label:'Колос',            sheet:'Кукуруза Колос',
+   regOrg:['колос'], regNom:[]},
+  {key:'agrolider', label:'Агролидер',        sheet:'Кукуруза Агролидер',
+   regOrg:['агролидер'], regNom:[]},
+];
+
+// Универсальный разбор листа контрагента
+function parseContractorSheet(sh) {
+  if (!sh) return null;
+  const range = XLSX.utils.decode_range(sh['!ref']||'A1');
+
+  // Годы из строки 3 (col 2+)
+  const yearCols = {};
+  for (let c=2; c<=Math.min(12, range.e.c); c++) {
+    const v = rv(sh,3,c);
+    if (v && String(v).includes('г.')) {
+      const y = parseInt(String(v).replace(/\s*г\.\s*/,'').trim());
+      if (y) yearCols[y] = c;
+    }
+  }
+  const years = Object.keys(yearCols).map(Number).sort((a,b)=>a-b);
+
+  // Строки по метке в col 1
+  const L = {};
+  for (let ri=0; ri<=range.e.r; ri++) {
+    const lbl = rv(sh,ri,1);
+    if (lbl) {
+      const key = String(lbl).trim().split('\n')[0].trim();
+      if (!(key in L)) L[key] = ri;
+    }
+  }
+  const R = {
+    start: L['Начало уборки'], end: L['Окончание уборки'],
+    calDays: L['Кол-во календарных дней'], factDays: L['Кол-во фактических дней'],
+    tech: L['Кол-во техники'], total: L['Валовый сбор'],
+    areaSev: L['Площадь сева'], areaUb: L['Площадь уборки'],
+    yield: L['Урожайность, ц/га'], plan: L['План'], fact: L['Факт']
+  };
+
+  // Ряды по годам
+  const histTotal=[], histArea=[], histYield=[];
+  years.forEach(y => {
+    const c = yearCols[y];
+    histTotal.push(R.total!=null ? (+rv(sh,R.total,c)||0) : 0);
+    histArea.push (R.areaUb!=null ? (+rv(sh,R.areaUb,c)||0) : 0);
+    histYield.push(R.yield!=null ? (+rv(sh,R.yield,c)||0) : 0);
+  });
+
+  // Последний год с данными = текущий
+  const lastY = years[years.length-1];
+  const lastC = yearCols[lastY];
+
+  return {
+    years, yearCols, histTotal, histArea, histYield,
+    startDate: R.start!=null ? toDate(rv(sh,R.start,lastC)) : null,
+    endDate:   R.end!=null   ? toDate(rv(sh,R.end,lastC))   : null,
+    calDays:   R.calDays!=null ? rv(sh,R.calDays,lastC) : null,
+    factDays:  R.factDays!=null? rv(sh,R.factDays,lastC): null,
+    techCount: R.tech!=null   ? rv(sh,R.tech,lastC)     : null,
+    planVal:   R.plan!=null ? (+rv(sh,R.plan,2)||0) : 0,
+    planYield: R.plan!=null ? (+rv(sh,R.plan,3)||0) : 0,
+    planArea:  R.plan!=null ? (+rv(sh,R.plan,4)||0) : 0,
+    factVal:   R.fact!=null ? (+rv(sh,R.fact,2)||0) : 0,
+    factYield: R.fact!=null ? (+rv(sh,R.fact,3)||0) : 0,
+    factArea:  R.fact!=null ? (+rv(sh,R.fact,4)||0) : 0,
+    lastYear: lastY
+  };
+}
+
+// ── Разбор листа ОПЕРФАКТ 2026: план/факт по контрагентам ──
+// col8=название, col9=план вал, col10=факт вал, col12=площадь уборки факт
+// col5=площадь сева бюджет, col6=площадь сева план, col7=урожайность план
+function parseOperfakt(sh) {
+  if (!sh) return {rows:{}, totals:{}};
+  const range = XLSX.utils.decode_range(sh['!ref']||'A1');
+  const rows = {};
+
+  // Сопоставление названия из ОПЕРФАКТ с ключом контрагента
+  // Порядок важен: сначала специфичные («суперсл»), потом общие
+  const nameMap = [
+    {test:n=>n.includes('грк суперсл')||n.includes('грк суперсладк'), key:'grk_super'},
+    {test:n=>n.includes('иррико суперсл'),                            key:'irriko_sup'},
+    {test:n=>n.includes('кукуруза грк'),                              key:'grk_ovosh'},
+    {test:n=>n.includes('кукуруза иррико'),                           key:'irriko_s'},
+    {test:n=>n.includes('кирова'),                                    key:'kirova'},
+    {test:n=>n.includes('агролидер'),                                 key:'agrolider'},
+    {test:n=>n.includes('колос'),                                     key:'kolos'},
+  ];
+
+  for (let ri=0; ri<=Math.min(range.e.r, 40); ri++) {
+    const nm = rv(sh,ri,8);
+    if (!nm) continue;
+    const name = String(nm).toLowerCase().trim();
+    const planVal = rv(sh,ri,9);
+    if (planVal == null) continue;
+    const hit = nameMap.find(m => m.test(name));
+    if (!hit) continue;
+    // Первое совпадение выигрывает (блок культур идёт после блока предприятий,
+    // но для Кирова/Колос/Агролидер есть только блок предприятий)
+    if (rows[hit.key]) continue;
+    rows[hit.key] = {
+      planVal:  +planVal||0,
+      factVal:  +rv(sh,ri,10)||0,
+      areaPlan: +rv(sh,ri,6)||0,   // площадь сева (план)
+      areaFact: +rv(sh,ri,12)||0,  // площадь уборки (факт)
+      yieldPlan:+rv(sh,ri,7)||0,
+    };
+  }
+
+  // Общие итоги из левого блока (col 2)
+  const findRow = (label, fromRow, toRow) => {
+    for (let ri=fromRow; ri<=Math.min(range.e.r,toRow); ri++) {
+      const v = rv(sh,ri,1);
+      if (v && String(v).trim().toLowerCase() === label) return ri;
+    }
+    return -1;
+  };
+  const rArePlan = findRow('план', 10, 20);
+  const rAreFact = findRow('факт', 10, 20);
+  const rValPlan = findRow('план', 26, 36);
+  const rValFact = findRow('факт', 26, 36);
+  const rStart   = findRow('начало уборки', 0, 10);
+  const rDays    = findRow('дней уборки', 0, 12);
+
+  const totals = {
+    areaPlan: rArePlan>=0 ? (+rv(sh,rArePlan,2)||0) : 0,
+    areaFact: rAreFact>=0 ? (+rv(sh,rAreFact,2)||0) : 0,
+    valPlan:  rValPlan>=0 ? (+rv(sh,rValPlan,2)||0) : 0,
+    valFact:  rValFact>=0 ? (+rv(sh,rValFact,2)||0) : 0,
+    startDate: rStart>=0 ? toDate(rv(sh,rStart,2)) : null,
+    dayCount: rDays>=0 ? rv(sh,rDays,2) : null,
+  };
+
+  return {rows, totals};
+}
+
+function parse(wb, wb2) {
+  const r26sh = wb.Sheets['Реестр уборки 2026'];
+  const r25sh = wb.Sheets['Реестр уборки 2025'];
+  const opf   = parseOperfakt(wb.Sheets['ОПЕРФАКТ 2026']);
+
+  // Разбираем все листы контрагентов
+  const contractors = {};
+  for (const ctr of CONTRACTORS) {
+    let parsed = null;
+    try { parsed = parseContractorSheet(wb.Sheets[ctr.sheet]); }
+    catch(e) { console.warn('Ошибка листа "'+ctr.sheet+'":', e.message); }
+
+    let d26=[], d25=[];
+    try { d26 = parseDailyRegistry(r26sh, ctr); } catch(e){ console.warn('daily26 '+ctr.label, e.message); }
+    try { d25 = parseDailyRegistry2025(r25sh, ctr); } catch(e){ console.warn('daily25 '+ctr.label, e.message); }
+
+    const base = parsed || {years:[], histTotal:[], histArea:[], histYield:[],
+      startDate:null, endDate:null, techCount:null, calDays:null, factDays:null, lastYear:2026};
+
+    // План/факт 2026 берём из ОПЕРФАКТ, факт вала — из реестра (актуальнее)
+    const o = opf.rows[ctr.key];
+    const factFromReg = d26.reduce((s,r)=>s+(r.val||0),0);
+    const areaFromReg = d26.reduce((s,r)=>s+(r.area||0),0);
+
+    const planVal  = o ? o.planVal  : 0;
+    const planArea = o ? o.areaPlan : 0;
+    const factVal  = factFromReg > 0 ? factFromReg : (o ? o.factVal : 0);
+    const factArea = areaFromReg > 0 ? areaFromReg : (o ? o.areaFact : 0);
+    const planYield= o && o.yieldPlan ? o.yieldPlan*10 : (planArea>0 ? planVal/planArea*10 : 0);
+    const factYield= factArea>0 ? factVal/factArea*10 : 0;
+
+    contractors[ctr.key] = {...ctr, ...base,
+      planVal, planArea, factVal, factArea, planYield, factYield,
+      daily26:d26, daily25:d25, noSheet:!parsed};
+  }
+
+  // Итоги «Все контрагенты» — из ОПЕРФАКТ (сходится с Excel)
+  const allYears = [2020,2021,2022,2023,2024,2025,2026];
+  const allTotal = allYears.map(()=>0), allArea = allYears.map(()=>0);
+  Object.values(contractors).forEach(c=>{
+    (c.years||[]).forEach((y,i)=>{
+      const idx = allYears.indexOf(y);
+      if (idx>=0) { allTotal[idx]+=c.histTotal[i]||0; allArea[idx]+=c.histArea[i]||0; }
+    });
+  });
+  const allYield = allYears.map((y,i)=> allArea[i]>0 ? allTotal[i]/allArea[i]*10 : 0);
+  const allDaily26 = parseDailyRegistry(r26sh, null);
+  const allDaily25 = parseDailyRegistry2025(r25sh, null);
+  const T = opf.totals;
+  const allFactVal  = allDaily26.reduce((s,r)=>s+(r.val||0),0)  || T.valFact  || 0;
+  const allFactArea = allDaily26.reduce((s,r)=>s+(r.area||0),0) || T.areaFact || 0;
+
+  // Заменяем последний год истории актуальным фактом
+  const i26 = allYears.indexOf(2026);
+  if (i26>=0 && allFactVal>0)  { allTotal[i26]=allFactVal; allArea[i26]=allFactArea;
+    allYield[i26]=allFactArea>0?allFactVal/allFactArea*10:0; }
+
+  contractors['all'] = {
+    key:'all', label:'Все', years:allYears,
+    histTotal:allTotal, histArea:allArea, histYield:allYield,
+    planVal:  T.valPlan  || 0,
+    planArea: T.areaPlan || 0,
+    factVal:  allFactVal,
+    factArea: allFactArea,
+    planYield: T.areaPlan>0 ? T.valPlan/T.areaPlan*10 : 0,
+    factYield: allFactArea>0 ? allFactVal/allFactArea*10 : 0,
+    startDate: T.startDate, endDate:null, techCount:null, calDays:null, factDays:null,
+    daily26: allDaily26, daily25: allDaily25, lastYear:2026
+  };
+
+  const cons  = wb2 ? parseCons(wb2)  : {rows26:[], rows25:[], sorts:[], sortStats:{}};
+  const stops = wb2 ? parseStop(wb2)  : [];
+
+  return {contractors, cons, stops};
+}
+
+// Проверка соответствия строки реестра контрагенту
+function matchContractor(org, nom, ctr) {
+  if (!ctr) return true; // null = все
+  const o = String(org||'').toLowerCase();
+  const n = String(nom||'').toLowerCase();
+  if (ctr.regOrg.length && !ctr.regOrg.some(k=>o.includes(k))) return false;
+  if (ctr.regNomExclude && ctr.regNomExclude.some(k=>n.includes(k))) return false;
+  if (ctr.regNom.length && !ctr.regNom.some(k=>n.includes(k))) return false;
+  return true;
+}
+
+// Реестр 2026: col3=контрагент, col8=номенклатура, col10=дата, col11=площадь, col13=брутто, col14=тара
+function parseDailyRegistry(sh, ctr) {
+  if (!sh) return [];
+  const range = XLSX.utils.decode_range(sh['!ref']||'A1');
+  const byDate = {};
+  for (let ri=1; ri<=range.e.r; ri++) {
+    const org = rv(sh,ri,3), nom = rv(sh,ri,8);
+    if (!matchContractor(org, nom, ctr)) continue;
+    const dt = toDate(rv(sh,ri,10));
+    const br = +rv(sh,ri,13)||0, ta = +rv(sh,ri,14)||0, ar = +rv(sh,ri,11)||0;
+    if (!dt || isNaN(dt)) continue;
+    const dk = dateKey(dt);
+    if (!byDate[dk]) byDate[dk] = {date:dt, dk, val:0, area:0};
+    byDate[dk].val  += (br-ta)/1000;
+    byDate[dk].area += ar;
+  }
+  return Object.values(byDate).sort((a,b)=>a.date-b.date);
+}
+
+// Реестр 2025: col3=контрагент, col8=номенклатура, col9=вес нетто, col10=дата
+function parseDailyRegistry2025(sh, ctr) {
+  if (!sh) return [];
+  const range = XLSX.utils.decode_range(sh['!ref']||'A1');
+  const byDate = {};
+  for (let ri=1; ri<=range.e.r; ri++) {
+    const org = rv(sh,ri,3), nom = rv(sh,ri,8);
+    if (!matchContractor(org, nom, ctr)) continue;
+    const dt = toDate(rv(sh,ri,10));
+    const net = +rv(sh,ri,9)||0;
+    if (!dt || isNaN(dt) || !net) continue;
+    const dk = dateKey(dt);
+    if (!byDate[dk]) byDate[dk] = {date:dt, dk, val:0};
+    byDate[dk].val += net/1000;
+  }
+  return Object.values(byDate).sort((a,b)=>a.date-b.date);
+}
+
+function parseCons(wb2) {
+  const sv  = wb2.Sheets['выработка'];
+  const ss  = wb2.Sheets['по сортам'];
+  const base = {rows26:[], rows25:[], rows24:[], sorts:[], sortStats:{}};
+
+  // ── Итоги по сортам из листа «выработка» строки 1-5 ──
+  // col0=сорт, col1=2024, col2=2025, col3=2026
+  if (sv) {
+    const sorts=[], sortStats={};
+    for (let ri=1; ri<=5; ri++) {
+      const nm  = rv(sv,ri,0);
+      const v26 = rv(sv,ri,3);
+      if (!nm || String(nm).toLowerCase().includes('итого')) continue;
+      sorts.push(String(nm).trim());
+      if (v26!=null && +v26>0) sortStats[String(nm).trim()] = +v26;
+    }
+    base.sorts=sorts; base.sortStats=sortStats;
+
+    // ── Выработка по дням из листа «выработка» строки 30+ ──
+    // col0=дата, col1=2026, col2=2025, col3=2024
+    const range = XLSX.utils.decode_range(sv['!ref']||'A1');
+    const rows26=[], rows25=[], rows24=[];
+    for (let ri=30; ri<=range.e.r; ri++) {
+      const dtRaw=rv(sv,ri,0);
+      const v26=rv(sv,ri,1), v25=rv(sv,ri,2), v24=rv(sv,ri,3);
+      const d=toDate(dtRaw); if(!d||isNaN(d)) continue;
+      const dk = dateKey(d);
+      if(v26!=null&&+v26>0) rows26.push({date:d, dk, total:+v26});
+      if(v25!=null&&+v25>0) rows25.push({date:d, dk, total:+v25});
+      if(v24!=null&&+v24>0) rows24.push({date:d, dk, total:+v24});
+    }
+    rows26.sort((a,b)=>a.date-b.date);
+    rows25.sort((a,b)=>a.date-b.date);
+    rows24.sort((a,b)=>a.date-b.date);
+    base.rows26=rows26; base.rows25=rows25; base.rows24=rows24;
+  }
+
+  // ── Выработка по сортам из листа «по сортам» (дополнительно) ──
+  // col0=дата, col1=ПП, col2=БС, col3=ВС, col4=1с
+  if (ss && base.rows26.length === 0) {
+    const range = XLSX.utils.decode_range(ss['!ref']||'A1');
+    const byDate={};
+    for (let ri=2; ri<=range.e.r; ri++) {
+      const dtRaw=rv(ss,ri,0);
+      const d=toDate(dtRaw); if(!d||isNaN(d)) continue;
+      const dk = dateKey(d);
+      const vals=[+rv(ss,ri,1)||0, +rv(ss,ri,2)||0, +rv(ss,ri,3)||0, +rv(ss,ri,4)||0];
+      const total=vals.reduce((s,v)=>s+v,0);
+      if(total>0){
+        if(!byDate[dk]) byDate[dk]={date:d,dk,total:0};
+        byDate[dk].total+=total;
+      }
+    }
+    base.rows26 = Object.values(byDate).sort((a,b)=>a.date-b.date);
+  }
+
+  return base;
+}
+
+function parseStop(wb2) {
+  const sp = wb2.Sheets['простои']; if(!sp) return [];
+  const range = XLSX.utils.decode_range(sp['!ref']||'A1');
+  const rows=[];
+  for (let ri=1; ri<=range.e.r; ri++) {
+    const dt=toDate(rv(sp,ri,0)); if(!dt||isNaN(dt)) continue;
+    const ln1=+rv(sp,ri,2)||0, ln2=+rv(sp,ri,3)||0;
+    if (ln1===0 && ln2===0) continue;
+    const shift=String(rv(sp,ri,1)||'').trim();
+    const cause=rv(sp,ri,4)||'';
+    const catMap=categorizeCauses(cause, ln1+ln2);
+    rows.push({date:dt, dk:dateKey(dt), shift, ln1, ln2, total:ln1+ln2, catMap, causeRaw:String(cause)});
+  }
+  return rows;
+}
+
+// Категории простоев
+const STOP_CATS = [
+  {name:'Мойка линии',          color:'#2471a3', keys:['мойка лин','обмывка лин','ополаскивание лин']},
+  {name:'Наполнение бункеров',  color:'#5dade2', keys:['наполнение бункер','наполнение после','подбор скорости']},
+  {name:'Замятие банки/крышки', color:'#e07b39', keys:['замятие банки','замятие крышки','замяло банку','застряла банка','замятие в закатке']},
+  {name:'Настройка/наладка',    color:'#16a085', keys:['настройка','синхрониз','восстановление параметр','регулировка','наладка','настройка закатки','настройка линии','настройка резок']},
+  {name:'Депаллетайзер',        color:'#c4930a', keys:['депаллетайзер','депалетайзер','нет подачи банки']},
+  {name:'Корзиноукладчик',      color:'#8e6cbf', keys:['корзиноукладчик']},
+  {name:'Отсутствие сырья',     color:'#c0392b', keys:['отсутствие сырья','недостаточно сырья','переезд','молодая кукуруза','нет сырья']},
+  {name:'Электроэнергия',       color:'#f39c12', keys:['отключение элэнерг','отключение электр','элэнерг']},
+  {name:'Поломка оборудования', color:'#2c3e50', keys:['обрыв','замена','редуктор','бланширователь','транспортёр','транспортер','поломка']},
+  {name:'Ошибка оператора',     color:'#e74c3c', keys:['ошибка оператора']},
+  {name:'Прочее',               color:'#95a5a6', keys:[]},
+];
+
+function categorizeCauses(text, totalMins) {
+  if (!text || !String(text).trim() || String(text).trim() === 'null') {
+    return totalMins > 0 ? {'Прочее': totalMins} : {};
+  }
+  const t = String(text).toLowerCase().replace(/\xa0/g,' ').replace(/\n/g,' ');
+  const catMap = {};
+
+  // Режим 1: есть "- N мин"
+  const pat = /([а-яёa-z\w\s\/(),\-\.]+?)\s*[-–]\s*(\d+)\s*мин/gi;
+  let m, found = false;
+  while ((m=pat.exec(t))!==null) {
+    found = true;
+    const phrase=m[1].toLowerCase(), mins=parseInt(m[2]);
+    if (!mins) continue;
+    let matched=false;
+    for (const cat of STOP_CATS) {
+      if (!cat.keys.length) continue;
+      if (cat.keys.some(k=>phrase.includes(k))) {
+        catMap[cat.name]=(catMap[cat.name]||0)+mins; matched=true; break;
+      }
+    }
+    if (!matched) catMap['Прочее']=(catMap['Прочее']||0)+mins;
+  }
+  if (found) return catMap;
+
+  // Режим 2: нет минут — делим totalMins между найденными категориями по тексту
+  // Разбиваем по запятым/точкам на фразы
+  const phrases = t.split(/[.,;]+/).map(s=>s.trim()).filter(Boolean);
+  const matched_cats = [];
+  for (const phrase of phrases) {
+    for (const cat of STOP_CATS) {
+      if (!cat.keys.length) continue;
+      if (cat.keys.some(k=>phrase.includes(k))) {
+        if (!matched_cats.includes(cat.name)) matched_cats.push(cat.name);
+        break;
+      }
+    }
+  }
+  if (matched_cats.length === 0) {
+    // ничего не распознали — всё в Прочее
+    if (totalMins > 0) catMap['Прочее'] = totalMins;
+  } else {
+    // делим поровну между найденными категориями
+    const perCat = Math.round(totalMins / matched_cats.length);
+    matched_cats.forEach(c => catMap[c] = perCat);
+  }
+  return catMap;
+}
+
+// ── ИНИЦИАЛИЗАЦИЯ ─────────────────────────────────────────
+function C() { return D.contractors[aCtr] || D.contractors['all']; }
+
+function init() {
+  buildCtrChips();
+  renderHeader();
+  renderMain(); renderDaily();
+}
+
+function buildCtrChips() {
+  const wrap = document.getElementById('ctrChips');
+  wrap.innerHTML = '';
+  const list = [D.contractors['all'], ...CONTRACTORS.map(c=>D.contractors[c.key])];
+  list.forEach(c => {
+    if (!c) return;
+    const el = document.createElement('div');
+    const hasData = (c.factVal>0) || (c.daily26 && c.daily26.length);
+    el.className = 'ctr' + (c.key===aCtr?' on':'') + (hasData?'':' nodata');
+    el.textContent = c.label;
+    el.onclick = () => {
+      aCtr = c.key;
+      wrap.querySelectorAll('.ctr').forEach(x=>x.classList.remove('on'));
+      el.classList.add('on');
+      renderHeader(); renderMain(); renderDaily();
+      const cmpTab = document.getElementById('t-cmp');
+      if (cmpTab && cmpTab.classList.contains('on')) renderCmp();
+    };
+    wrap.appendChild(el);
+  });
+}
+
+function renderHeader() {
+  const c = C();
+  const withVal = (c.daily26||[]).filter(x=>x.val>0);
+  document.getElementById('dbadge').textContent = 'День ' + withVal.length;
+  const last = withVal.length ? withVal[withVal.length-1] : null;
+  const name = c.key==='all' ? '' : ' · ' + c.label;
+  document.getElementById('hsub').textContent =
+    (last ? 'По состоянию на ' + fmtD(last.date) : 'Уборка не начата') + name;
+}
+
+// ── УТИЛИТЫ ───────────────────────────────────────────────
+function N(n){ return(n==null||isNaN(n))?'—':(+n).toLocaleString('ru',{maximumFractionDigits:1}); }
+
+// ── СВОДКА ────────────────────────────────────────────────
+function renderMain() {
+  const d = C();
+  const pvp = d.planVal ? d.factVal/d.planVal : 0;
+  const pap = d.planArea ? d.factArea/d.planArea : 0;
+  const dy  = d.planYield && d.factYield ? (d.factYield-d.planYield)/d.planYield : 0;
+
+  document.getElementById('kgrid').innerHTML = [
+    {l:'Валовый сбор',  v:N(d.factVal),   u:'т',    pl:'план: '+N(d.planVal)+' т',
+     pct:Math.round(pvp*100)+'%', bc:pvp<.3?'br':pvp<.6?'by':'bg', cc:'w'},
+    {l:'Площадь уборки',v:N(d.factArea),  u:'га',   pl:'план: '+N(d.planArea)+' га',
+     pct:Math.round(pap*100)+'%', bc:pap<.3?'br':pap<.6?'by':'bg', cc:'w'},
+    {l:'Урожайность',   v:d.factYield>0?d.factYield.toFixed(1):'—', u:'ц/га',
+     pl:'план: '+(d.planYield>0?d.planYield.toFixed(1):'—')+' ц/га',
+     pct:(dy>=0?'+':'')+Math.round(dy*100)+'%', bc:dy>=0?'bg':'br', cc:'g'},
+    {l:'Выполнение плана',v:Math.round(pvp*100),u:'%',pl:'от '+N(d.planVal)+' т',
+     pct:N(d.factVal)+' т', bc:pvp<.3?'br':pvp<.6?'by':'bg', cc:'w'},
+  ].map(k=>`<div class="kc ${k.cc}"><div class="kl">${k.l}</div><div class="kv">${k.v} <em>${k.u}</em></div><div class="kp">${k.pl}</div><span class="bdg ${k.bc}">${k.pct}</span></div>`).join('');
+
+  const dayCount = (d.daily26||[]).filter(r=>r.val>0).length;
+  const lastAreaIdx = (d.histArea||[]).length-1;
+  document.getElementById('infoCard').innerHTML = [
+    {l:'Контрагент',       v:d.label},
+    {l:'Начало уборки',    v:d.startDate?fmtDate(d.startDate):'—'},
+    {l:'Окончание уборки', v:d.endDate?fmtDate(d.endDate):'ожидается'},
+    {l:'Техника',          v:d.techCount||'—'},
+    {l:'Дней с данными',   v:dayCount||'—'},
+    {l:'Площадь уборки',   v:lastAreaIdx>=0?N(d.histArea[lastAreaIdx])+' га':'—'},
+  ].map(r=>`<div class="ir"><span class="il">${r.l}</span><span class="iv">${r.v}</span></div>`).join('');
+
+  // Графики истории
+  destroyChart('chYield'); destroyChart('chTotal');
+  const yrs = d.years||[];
+  const lastY = yrs.length ? yrs[yrs.length-1] : 2026;
+  const colors = yrs.map(y=>y===lastY?'#1a5276':y===lastY-1?'#2471a3':'#aed6f1');
+  chYield = new Chart(document.getElementById('cYield').getContext('2d'),{
+    type:'bar',
+    data:{labels:yrs,datasets:[{data:(d.histYield||[]).map(v=>+(v||0).toFixed(2)),backgroundColor:colors,borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} ц/га`}}},
+      scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+  chTotal = new Chart(document.getElementById('cTotal').getContext('2d'),{
+    type:'bar',
+    data:{labels:yrs,datasets:[{data:d.histTotal||[],backgroundColor:colors,borderRadius:6}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${N(c.raw)} т`}}},
+      scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+}
+
+// ── ЕЖЕДНЕВНО ─────────────────────────────────────────────
+function renderDaily() {
+  const c = C();
+  const rows = (c.daily26||[]).filter(r=>r.date&&r.val>0);
+  const maxV = Math.max(...rows.map(r=>r.val),1);
+  const total = rows.reduce((s,r)=>s+r.val,0);
+  const nameSuffix = c.key==='all' ? '' : ` · ${c.label}`;
+  document.getElementById('dinfo').innerHTML =
+    `<strong>Итого за сезон:</strong> ${N(total)} т · <strong>Дней:</strong> ${rows.length}${nameSuffix}`;
+  document.getElementById('dlist').innerHTML = rows.length
+    ? rows.map(r=>{
+        const w=Math.round(r.val/maxV*100);
+        return `<div class="di">
+          <div class="dd">${fmtD(r.date)}</div>
+          <div class="dw">
+            <div class="dbg"><div class="dbar" style="width:${w}%;background:var(--gm)"></div></div>
+            ${r.area>0?`<div class="df">Площадь: ${N(r.area)} га</div>`:''}
+          </div>
+          <div class="dv">${N(r.val)} т</div>
+        </div>`;
+      }).join('')
+    : '<div class="empty">Нет данных по этому контрагенту</div>';
+}
+
+// ── ДИНАМИКА ──────────────────────────────────────────────
+function renderCmp() {
+  destroyChart('chHist'); destroyChart('chDay');
+  const isD = cMode==='daily';
+  document.getElementById('cmpA').style.display = isD?'none':'';
+  document.getElementById('cmpB').style.display = isD?'':'none';
+  const h = C();
+  const yrs = h.years||[];
+  const lastY = yrs.length ? yrs[yrs.length-1] : 2026;
+  const suffix = h.key==='all' ? '' : ' · ' + h.label;
+  if (!isD) {
+    const isY=cMode==='yield';
+    const vals = isY ? (h.histYield||[]) : (h.histTotal||[]);
+    const colors = yrs.map(y=>y===lastY?'#1a5276':y===lastY-1?'#2471a3':'#aed6f1');
+    const yr = yrs.length ? `${yrs[0]}–${lastY}` : '';
+    document.getElementById('cmpAt').textContent =
+      (isY?`Урожайность ${yr}, ц/га`:`Валовый сбор ${yr}, т`) + suffix;
+    chHist = new Chart(document.getElementById('cHist').getContext('2d'),{
+      type:'bar',
+      data:{labels:yrs,datasets:[{data:vals.map(v=>+v||0),backgroundColor:colors,borderRadius:6}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>` ${N(c.raw)} ${isY?'ц/га':'т'}`}}},
+        scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10}}}}}
+    });
+  } else {
+    const v26=(h.daily26||[]).filter(r=>r.val>0), v25=(h.daily25||[]).filter(r=>r.val>0);
+    const maxD=Math.max(v26.length,v25.length,1);
+    chDay = new Chart(document.getElementById('cDay').getContext('2d'),{
+      type:'line',
+      data:{
+        labels:Array.from({length:maxD},(_,i)=>'День '+(i+1)),
+        datasets:[
+          {label:'2026',data:v26.map(r=>+r.val.toFixed(1)),borderColor:'#1a5276',backgroundColor:'rgba(26,82,118,.1)',tension:.35,pointRadius:4,pointBackgroundColor:'#1a5276',borderWidth:2.5},
+          {label:'2025',data:v25.map(r=>+r.val.toFixed(1)),borderColor:'#5dade2',backgroundColor:'rgba(93,173,226,.08)',tension:.35,pointRadius:3,pointBackgroundColor:'#5dade2',borderWidth:2}
+        ]
+      },
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${N(c.raw)} т`}}},
+        scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10},maxTicksLimit:8}}}}
+    });
+  }
+  const d26=(h.daily26||[]).filter(r=>r.val>0), d25=(h.daily25||[]).filter(r=>r.val>0);
+  const t26=d26.reduce((s,r)=>s+r.val,0), t25=d25.reduce((s,r)=>s+r.val,0);
+  let txt = h.key==='all' ? '' : `<strong>${h.label}.</strong> `;
+  if(d26.length&&d25.length) txt+=`<strong>Ср. суточный:</strong> 2026 = ${(t26/d26.length).toFixed(1)} т, 2025 = ${(t25/d25.length).toFixed(1)} т. `;
+  const li = yrs.indexOf(lastY), pi = yrs.indexOf(lastY-1);
+  const yv=li>=0?(h.histTotal||[])[li]:0, pv=pi>=0?(h.histTotal||[])[pi]:0;
+  if(yv&&pv){const dd=((yv-pv)/pv*100).toFixed(1);txt+=`<strong>Вал ${lastY}:</strong> ${N(yv)} т (${dd>0?'+':''}${dd}% к ${lastY-1}).`;}
+  document.getElementById('cmpInfo').innerHTML=txt||'Нет данных для сравнения';
+}
+
+// ── КОНСЕРВЫ ──────────────────────────────────────────────
+function renderCons() {
+  destroyChart('chCons'); destroyChart('chCons2');
+  const c = D.cons;
+  const rows26=c.rows26, rows25=c.rows25;
+  const total26=rows26.reduce((s,r)=>s+r.total,0);
+  const total25=rows25.reduce((s,r)=>s+r.total,0);
+  const maxDay=rows26.length?Math.max(...rows26.map(r=>r.total)):0;
+  const avg26=rows26.length?total26/rows26.length:0;
+
+  // КПИ
+  document.getElementById('consKpi').innerHTML = rows26.length ? `
+    <div class="cons-kc"><div class="kl">Итого 2026</div><div class="kv">${N(total26)} <em>тыс.шт</em></div><div class="kp">${rows26.length} рабочих дней</div></div>
+    <div class="cons-kc c2"><div class="kl">Итого 2025</div><div class="kv">${N(total25)} <em>тыс.шт</em></div><div class="kp">${rows25.length} рабочих дней</div></div>
+    <div class="cons-kc c3"><div class="kl">Макс. в сутки</div><div class="kv">${N(maxDay)} <em>тыс.шт</em></div></div>
+    <div class="cons-kc"><div class="kl">Ср. в сутки 2026</div><div class="kv">${N(avg26)} <em>тыс.шт</em></div></div>
+    ${Object.keys(c.sortStats).length ? `
+    <div style="grid-column:1/-1;background:var(--w);border-radius:var(--r);padding:12px;box-shadow:var(--sh)">
+      <div style="font-size:10px;color:var(--tl);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Итоги по сортам 2026, тыс.шт</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        ${Object.entries(c.sortStats).map(([s,v])=>`<div style="flex:1;min-width:60px;text-align:center;background:#f0f7fb;border-radius:8px;padding:7px 4px"><div style="font-size:14px;font-weight:800;color:var(--gd)">${N(v)}</div><div style="font-size:10px;color:var(--tl);margin-top:2px">${s}</div></div>`).join('')}
+      </div>
+    </div>` : ''}` : '<div class="empty" style="grid-column:1/-1">Нет данных выработки</div>';
+
+  if (!rows26.length) return;
+
+  // График по дням 2026
+  const colors=rows26.map(r=>r.total>=maxDay*.9?'#1a5276':'#5dade2');
+  chCons = new Chart(document.getElementById('cCons').getContext('2d'),{
+    type:'bar',
+    data:{labels:rows26.map(r=>fmtD(r.date)),datasets:[{data:rows26.map(r=>+r.total.toFixed(1)),backgroundColor:colors,borderRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} тыс.шт`}}},
+      scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:9},maxRotation:45,maxTicksLimit:15}}}}
+  });
+
+  // График 2025 vs 2026 по дням сезона
+  const maxD2=Math.max(rows26.length,rows25.length);
+  chCons2 = new Chart(document.getElementById('cCons2').getContext('2d'),{
+    type:'line',
+    data:{labels:Array.from({length:maxD2},(_,i)=>'День '+(i+1)),
+      datasets:[
+        {label:'2026',data:rows26.map(r=>+r.total.toFixed(1)),borderColor:'#1a5276',backgroundColor:'rgba(26,82,118,.1)',tension:.35,pointRadius:3,pointBackgroundColor:'#1a5276',borderWidth:2.5},
+        {label:'2025',data:rows25.map(r=>+r.total.toFixed(1)),borderColor:'#5dade2',backgroundColor:'rgba(93,173,226,.08)',tension:.35,pointRadius:2,pointBackgroundColor:'#5dade2',borderWidth:2}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw} тыс.шт`}}},
+      scales:{y:{beginAtZero:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{grid:{display:false},ticks:{font:{size:10},maxTicksLimit:8}}}}
+  });
+
+  // Список по дням
+  const maxV=Math.max(...rows26.map(r=>r.total),1);
+  document.getElementById('consList').innerHTML=[...rows26].reverse().map(r=>{
+    const w=Math.round(r.total/maxV*100);
+    return `<div class="di"><div class="dd">${fmtD(r.date)}</div><div class="dw"><div class="dbg"><div class="dbar" style="width:${w}%;background:var(--gm)"></div></div></div><div class="dv">${N(r.total)} тыс.</div></div>`;
+  }).join('');
+}
+
+// ── ПРОСТОИ ───────────────────────────────────────────────
+function setStopView(v,el) {
+  stopView=v;
+  document.querySelectorAll('#stopV1,#stopV2').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('stopDay').style.display=v==='day'?'':'none';
+  document.getElementById('stopSum').style.display=v==='summary'?'':'none';
+  if(v==='day') renderStopDay(); else renderStopSummary();
+}
+
+function renderStop() {
+  if (stopView==='day') renderStopDay(); else renderStopSummary();
+}
+
+function renderStopDay() {
+  destroyChart('chStop');
+  const stops=D.stops;
+  if (!stops.length) { document.getElementById('stopDayList').innerHTML='<div class="empty">Данные простоев появятся после загрузки файла kukuruza_cons_2026.xlsx</div>'; return; }
+  const byDate={};
+  for(const r of stops) {
+    if(!byDate[r.dk]) byDate[r.dk]={date:r.date,ln1:0,ln2:0,total:0};
+    byDate[r.dk].ln1+=r.ln1; byDate[r.dk].ln2+=r.ln2; byDate[r.dk].total+=r.total;
+  }
+  const dates=Object.values(byDate).sort((a,b)=>a.date-b.date);
+  chStop = new Chart(document.getElementById('cStop').getContext('2d'),{
+    type:'bar',
+    data:{labels:dates.map(d=>fmtD(d.date)),
+      datasets:[
+        {label:'ЛН-1',data:dates.map(d=>d.ln1),backgroundColor:'#1a5276',borderRadius:3,stack:'s'},
+        {label:'ЛН-2',data:dates.map(d=>d.ln2),backgroundColor:'#5dade2',borderRadius:3,stack:'s'}
+      ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.raw} мин`}}},
+      scales:{y:{beginAtZero:true,stacked:true,grid:{color:'#e1f0fa'},ticks:{font:{size:10}}},x:{stacked:true,grid:{display:false},ticks:{font:{size:10},maxRotation:45}}}}
+  });
+  const grouped={};
+  for(const r of stops){ if(!grouped[r.dk]) grouped[r.dk]=[]; grouped[r.dk].push(r); }
+  document.getElementById('stopDayList').innerHTML=Object.keys(grouped).sort().map(dk=>{
+    const rows=grouped[dk], dayTotal=rows.reduce((s,r)=>s+r.total,0);
+    return `<div class="stop-card">
+      <div class="stop-date"><span>${fmtD(rows[0].date)}</span><span style="font-size:12px;color:var(--rd);font-weight:700">▼ ${dayTotal} мин</span></div>
+      ${rows.map(r=>{
+        const cats=Object.entries(r.catMap).filter(([,m])=>m>0).sort((a,b)=>b[1]-a[1]);
+        return `<div style="background:${r.shift==='день'?'#fffde7':'#e8f0fe'};border-radius:8px;padding:9px 10px;margin-bottom:7px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:7px">
+            <span style="font-size:11px;font-weight:600;color:var(--gd)">${r.shift==='день'?'☀️ День':'🌙 Ночь'}</span>
+            <div style="display:flex;gap:8px"><span style="font-size:11px;color:#555">ЛН-1: <strong>${r.ln1}</strong></span><span style="font-size:11px;color:#555">ЛН-2: <strong>${r.ln2}</strong></span></div>
+          </div>
+          ${cats.map(([cat,mins])=>{const info=STOP_CATS.find(c=>c.name===cat)||{color:'#999'};
+            return `<div class="cause-row"><div class="cause-dot" style="background:${info.color}"></div><div class="cause-name">${cat}</div><div class="cause-min">${mins} мин</div></div>`;
+          }).join('')||'<div style="font-size:11px;color:var(--tl)">Причины не распознаны</div>'}
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+}
+
+function renderStopSummary() {
+  destroyChart('chStopSum');
+  const stops=D.stops;
+  if (!stops.length) { document.getElementById('stopSumList').innerHTML='<div class="empty">Нет данных</div>'; return; }
+  const catTotals={};
+  for(const r of stops) for(const [cat,mins] of Object.entries(r.catMap)) catTotals[cat]=(catTotals[cat]||0)+mins;
+  const sorted=Object.entries(catTotals).sort((a,b)=>b[1]-a[1]);
+  const maxM=sorted.length?sorted[0][1]:1;
+  const totalAll=sorted.reduce((s,[,m])=>s+m,0);
+  const colors=sorted.map(([cat])=>(STOP_CATS.find(c=>c.name===cat)||{color:'#999'}).color);
+  chStopSum = new Chart(document.getElementById('cStopSum').getContext('2d'),{
+    type:'bar',
+    data:{labels:sorted.map(([cat])=>cat),datasets:[{data:sorted.map(([,m])=>m),backgroundColor:colors,borderRadius:5}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} мин (${Math.round(c.raw/60*10)/10} ч)`}}},
+      scales:{x:{beginAtZero:true,grid:{color:'#f5f5f5'},ticks:{font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:10}}}}}
+  });
+  document.getElementById('stopSumList').innerHTML=sorted.map(([cat,mins])=>{
+    const info=STOP_CATS.find(c=>c.name===cat)||{color:'#999'};
+    const pct=Math.round(mins/maxM*100), pctAll=Math.round(mins/totalAll*100);
+    const dayBreak={};
+    for(const r of stops) if(r.catMap[cat]) dayBreak[r.dk]=(dayBreak[r.dk]||0)+r.catMap[cat];
+    const topDays=Object.entries(dayBreak).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([dk,m])=>`${dk.slice(5).split('-').reverse().join('.')}: ${m}м`).join(' · ');
+    return `<div class="sum-row"><div class="sum-header">
+      <span class="sum-name"><span style="width:10px;height:10px;border-radius:50%;background:${info.color};display:inline-block;flex-shrink:0"></span>${cat}</span>
+      <span class="sum-val">${mins} мин</span></div>
+      <div class="sum-bar-bg"><div class="sum-bar" style="width:${pct}%;background:${info.color}"></div></div>
+      <div class="sum-sub">${Math.round(mins/60*10)/10} ч · ${pctAll}% от всех простоев · Топ дни: ${topDays||'—'}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── ВСПОМОГАТЕЛЬНЫЕ ───────────────────────────────────────
+function destroyChart(name) {
+  const map = {chYield:()=>{if(chYield){chYield.destroy();chYield=null;}},
+    chTotal:()=>{if(chTotal){chTotal.destroy();chTotal=null;}},
+    chHist:()=>{if(chHist){chHist.destroy();chHist=null;}},
+    chDay:()=>{if(chDay){chDay.destroy();chDay=null;}},
+    chCons:()=>{if(chCons){chCons.destroy();chCons=null;}},
+    chCons2:()=>{if(chCons2){chCons2.destroy();chCons2=null;}},
+    chStop:()=>{if(chStop){chStop.destroy();chStop=null;}},
+    chStopSum:()=>{if(chStopSum){chStopSum.destroy();chStopSum=null;}}};
+  if(map[name]) try{map[name]();}catch{}
+}
+
+function setMode(m,el){ cMode=m; document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on')); el.classList.add('on'); renderCmp(); }
+function goTab(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('t-'+name).classList.add('on'); el.classList.add('on');
+  if(name==='cmp')  renderCmp();
+  if(name==='cons') renderCons();
+  if(name==='stop') renderStop();
+}
+
+load();
+</script>
+</body>
+</html>
